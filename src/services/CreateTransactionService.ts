@@ -23,8 +23,8 @@ class CreateTransactionService {
       throw Error(`Negative values aren't accepted.`);
     }
 
-    const balance = this.transactionsRepository.getBalance();
-    if (type === 'outcome' && balance.total < value) {
+    const { total } = this.transactionsRepository.getBalance();
+    if (type === 'outcome' && total < value) {
       throw Error('The outcome value cannot be greater than total balance.');
     }
 
